@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pixel Heart</title>
+<style>
+  :root {
+    --bg: #f6f3ef;
+    --bg-grid: rgba(20, 16, 24, 0.055);
+    --text: #4a4248;
+    --heart: #e8324a;
+    --heart-shine: #ff8a9b;
+    --ink: #2a1420;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141018;
+      --bg-grid: rgba(255, 255, 255, 0.05);
+      --text: #9a8f99;
+      --heart: #ff3355;
+      --heart-shine: #ffa3b2;
+      --ink: #0a0509;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #141018;
+    --bg-grid: rgba(255, 255, 255, 0.05);
+    --text: #9a8f99;
+    --heart: #ff3355;
+    --heart-shine: #ffa3b2;
+    --ink: #0a0509;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 32px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    background-color: var(--bg);
+    /* 16px pixel grid, so the page itself reads as graph paper */
+    background-image:
+      linear-gradient(var(--bg-grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
+    background-size: 16px 16px;
+    color: var(--text);
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  .heart {
+    width: min(68vw, 46vh, 420px);
+    height: auto;
+    display: block;
+    /* keep edges hard even on fractional pixel scales */
+    shape-rendering: crispEdges;
+    filter: drop-shadow(0 0 28px color-mix(in srgb, var(--heart) 35%, transparent));
+    animation: beat 1.8s ease-in-out infinite;
+  }
+
+  .ink   { fill: var(--ink); }
+  .fill  { fill: var(--heart); }
+  .shine { fill: var(--heart-shine); }
+
+  .caption {
+    margin: 0;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+  <svg class="heart" viewBox="0 0 15 13" role="img" aria-label="A pixel-art heart">
+    <!-- outline -->
+    <rect class="ink" x="2" y="0" width="5" height="1"/>
+    <rect class="ink" x="8" y="0" width="5" height="1"/>
+    <rect class="ink" x="1" y="1" width="2" height="1"/>
+    <rect class="ink" x="6" y="1" width="3" height="1"/>
+    <rect class="ink" x="12" y="1" width="2" height="1"/>
+    <rect class="ink" x="0" y="2" width="2" height="1"/>
+    <rect class="ink" x="7" y="2" width="1" height="1"/>
+    <rect class="ink" x="13" y="2" width="2" height="1"/>
+    <rect class="ink" x="0" y="3" width="1" height="1"/>
+    <rect class="ink" x="14" y="3" width="1" height="1"/>
+    <rect class="ink" x="0" y="4" width="1" height="1"/>
+    <rect class="ink" x="14" y="4" width="1" height="1"/>
+    <rect class="ink" x="0" y="5" width="1" height="1"/>
+    <rect class="ink" x="14" y="5" width="1" height="1"/>
+    <rect class="ink" x="0" y="6" width="2" height="1"/>
+    <rect class="ink" x="13" y="6" width="2" height="1"/>
+    <rect class="ink" x="1" y="7" width="2" height="1"/>
+    <rect class="ink" x="12" y="7" width="2" height="1"/>
+    <rect class="ink" x="2" y="8" width="2" height="1"/>
+    <rect class="ink" x="11" y="8" width="2" height="1"/>
+    <rect class="ink" x="3" y="9" width="2" height="1"/>
+    <rect class="ink" x="10" y="9" width="2" height="1"/>
+    <rect class="ink" x="4" y="10" width="2" height="1"/>
+    <rect class="ink" x="9" y="10" width="2" height="1"/>
+    <rect class="ink" x="5" y="11" width="2" height="1"/>
+    <rect class="ink" x="8" y="11" width="2" height="1"/>
+    <rect class="ink" x="6" y="12" width="3" height="1"/>
+    <!-- body -->
+    <rect class="fill" x="3" y="1" width="3" height="1"/>
+    <rect class="fill" x="9" y="1" width="3" height="1"/>
+    <rect class="fill" x="2" y="2" width="1" height="1"/>
+    <rect class="fill" x="5" y="2" width="2" height="1"/>
+    <rect class="fill" x="8" y="2" width="5" height="1"/>
+    <rect class="fill" x="1" y="3" width="2" height="1"/>
+    <rect class="fill" x="4" y="3" width="10" height="1"/>
+    <rect class="fill" x="1" y="4" width="13" height="1"/>
+    <rect class="fill" x="1" y="5" width="13" height="1"/>
+    <rect class="fill" x="2" y="6" width="11" height="1"/>
+    <rect class="fill" x="3" y="7" width="9" height="1"/>
+    <rect class="fill" x="4" y="8" width="7" height="1"/>
+    <rect class="fill" x="5" y="9" width="5" height="1"/>
+    <rect class="fill" x="6" y="10" width="3" height="1"/>
+    <rect class="fill" x="7" y="11" width="1" height="1"/>
+    <!-- highlight -->
+    <rect class="shine" x="3" y="2" width="2" height="1"/>
+    <rect class="shine" x="3" y="3" width="1" height="1"/>
+  </svg>
+  <p class="caption">a special heart for my lober</p>
+</body>
+</html>
